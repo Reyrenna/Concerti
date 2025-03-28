@@ -1,4 +1,5 @@
 using Concerti.Data;
+using Concerti.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<EventiDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<ArtistiService>();
 
 var app = builder.Build();
 
